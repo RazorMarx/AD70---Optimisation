@@ -58,6 +58,11 @@ public class RecuitSimuleAgenda {
 		while(scoreCurrent > 0 && step < maxStep){
 			//Pick One algo for neighbour search
 			int[] colorationNext = rand2Change(coloration);
+			//int[] colorationNext = rand3Change(coloration);
+			//int[] colorationNext = alg2OptChange(coloration);
+			//int[] colorationNext = alg3OptChange(coloration);
+			
+			
 			int scoreNext = countScoreOfColoration(colorationNext);
 			
 			if(bufferStepForCooling > stepBeforeCooling)
