@@ -4,7 +4,7 @@ public class RecuitSimuleAgenda {
 
 	//Matrice graphe
 	static int[][] matrice = new int[][]{
-	   //A B C D E F G H I J K
+		//A B C D E F G H I J K
 		{0,1,1,0,1,0,1,1,0,1,0},	//A
 		{1,0,1,1,0,0,1,1,1,0,1},	//B
 		{1,1,0,0,1,1,0,1,0,0,0},	//C
@@ -27,7 +27,7 @@ public class RecuitSimuleAgenda {
 	
 	//Coloration initial
 	static int[] colorInitial = new int[]{
-	  //A B C D E F G H I J K
+		//A B C D E F G H I J K
 		0,1,2,3,0,1,2,3,0,1,2
 	};
 	
@@ -68,7 +68,7 @@ public class RecuitSimuleAgenda {
 			if(bufferStepForCooling > stepBeforeCooling)
 				temperature *= coolingGraduatation;
 			
-			if(shouldAccept( temperature, (double)(scoreNext - scoreCurrent)) ){
+			if(shouldAccept( temperature, (scoreNext - scoreCurrent)) ){
 				scoreCurrent = scoreNext;
 				coloration = colorationNext;
 				bufferStepForCooling = 0;
@@ -97,7 +97,6 @@ public class RecuitSimuleAgenda {
 	 * @return
 	 */
 	public static double probabilityOfAcceptance(double temperature, double deltaE) {
-		System.out.println(Math.exp(deltaE / temperature));
 		return Math.exp(deltaE / temperature);
 	}
 	
@@ -205,6 +204,7 @@ public class RecuitSimuleAgenda {
 		for(int[] couple : predecessorConstraint)
 			conflict += weightPredescessorConflict * additionalConstraintOnPredecessor(couple[0], couple[1], color);
 		
+		//MaxVerticesPerColor Constraint
 		conflict += weightMaxVerticePerColorConflict * additionalConstraintOnMaxVerticePerColor(3, color);
 		return conflict;
 	}
